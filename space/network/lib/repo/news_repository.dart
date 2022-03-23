@@ -20,12 +20,12 @@ class NewsRepository extends INewsRepository {
 
   @override
   Future<List<News>> getNewsList(int limit, int start) async {
-    return await _apiService.fetchNewsList(limit, start);
+    return _apiService.fetchNewsList(limit, start);
   }
 
   @override
   Future<News> getNews(String id) async {
-    return await _apiService.fetchNews(id);
+    return _apiService.fetchNews(id);
   }
 
   @override

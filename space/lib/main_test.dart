@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:space/main.dart';
-import 'package:space/main_provider.dart';
+import 'package:space/main_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class TestApp extends StatelessWidget {

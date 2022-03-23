@@ -11,6 +11,6 @@ abstract class ApiService {
   Future<List<News>> fetchNewsList(
       @Query("_limit") int limit, @Query("_start") int start);
 
-  @GET("/v3/articles")
-  Future<News> fetchNews(@Query("id") String id);
+  @GET("/v3/articles/{id}")
+  Future<News> fetchNews(@Path("id") String id);
 }

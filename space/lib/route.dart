@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:network/api/api_client.dart';
 import 'package:network/repo/news_repository.dart';
 import 'package:space/pages/detail/detail.dart';
-import 'package:space/pages/detail/detail_provider.dart';
+import 'package:space/pages/detail/detail_viewmodel.dart';
 import 'package:space/pages/home/home.dart';
 import 'package:provider/provider.dart';
-import 'package:space/pages/home/home_provider.dart';
+import 'package:space/pages/home/home_viewmodel.dart';
 import 'package:space/pages/test/test.dart';
 
 extension RouteSettingsEx on RouteSettings {
@@ -21,9 +21,8 @@ class AppRoute {
         widgetBuilder = (_) => const HomePage();
         break;
       case "/detail":
-        widgetBuilder = (_) => ChangeNotifierProvider(
-              create: (_) => DetailProvider(routeSettings.routeArgs()),
-              child: const DetailPage(),
+        widgetBuilder = (_) => DetailPage(
+              id: routeSettings.routeArgs(),
             );
         break;
 

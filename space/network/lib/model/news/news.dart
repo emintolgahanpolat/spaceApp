@@ -1,31 +1,32 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'event.dart';
+import 'launch.dart';
+
 part 'news.g.dart';
 
 @JsonSerializable()
 class News {
   int? id;
+  bool? featured;
   String? title;
   String? url;
   String? imageUrl;
   String? newsSite;
   String? summary;
   String? publishedAt;
-  String? updatedAt;
-  bool? featured;
-  List<dynamic>? launches;
-  List<dynamic>? events;
+  List<Launch>? launches;
+  List<Event>? events;
 
   News({
     this.id,
+    this.featured,
     this.title,
     this.url,
     this.imageUrl,
     this.newsSite,
     this.summary,
     this.publishedAt,
-    this.updatedAt,
-    this.featured,
     this.launches,
     this.events,
   });

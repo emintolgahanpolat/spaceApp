@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:network/logger.dart';
 import 'package:network/model/news/news.dart';
 import 'package:network/repo/news_repository.dart';
-import 'package:network/resource.dart';
 
 class HomeProvider extends ChangeNotifier {
   final NewsRepository _newsRepository;

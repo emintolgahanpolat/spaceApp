@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network/model/news/news.dart';
-import 'package:space/pages/home/home_provider.dart';
+import 'package:space/pages/home/home_viewmodel.dart';
 
 void main() {
   /*
