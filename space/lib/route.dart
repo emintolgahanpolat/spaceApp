@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:network/api/api_client.dart';
 import 'package:network/repo/news_repository.dart';
 import 'package:space/pages/detail/detail.dart';
-import 'package:space/pages/detail/detail_viewmodel.dart';
+import 'package:space/pages/detail/detail_vm.dart';
 import 'package:space/pages/home/home.dart';
 import 'package:provider/provider.dart';
-import 'package:space/pages/home/home_viewmodel.dart';
+import 'package:space/pages/home/home_vm.dart';
 import 'package:space/pages/test/test.dart';
 
 extension RouteSettingsEx on RouteSettings {

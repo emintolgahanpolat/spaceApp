@@ -34,7 +34,8 @@ class NewsRepository extends INewsRepository {
         saveCallResult: (result) {
           _getStorage.write("nasa", jsonEncode(result));
         },
-        shouldFetch: (data) => data == null || data.isEmpty,
+        shouldFetch: (data) =>
+            data == null || data.isEmpty || data.length < limit * start,
         loadFromDb: () {
           String? res = _getStorage.read("nasa");
           List<News> data = [];

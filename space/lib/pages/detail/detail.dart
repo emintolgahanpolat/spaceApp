@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:space/pages/base_view.dart';
-import 'package:space/pages/detail/detail_viewmodel.dart';
+import 'package:space/pages/detail/detail_vm.dart';
 
 class DetailPage extends StatelessWidget {
   final String id;
@@ -14,18 +14,10 @@ class DetailPage extends StatelessWidget {
     }, builder: (c, viewModel, w) {
       return Scaffold(
         appBar: AppBar(
-          title: Text("Detail"),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.refresh),
-              onPressed: () {
-                viewModel.fetchData(id);
-              },
-            )
-          ],
+          title: Text(viewModel.news?.title ?? ""),
         ),
         body: viewModel.news == null
-            ? Text("Loading")
+            ? const Center(child: CircularProgressIndicator())
             : SingleChildScrollView(
                 child: Column(
                   children: [
@@ -35,8 +27,9 @@ class DetailPage extends StatelessWidget {
                         imageUrl: viewModel.news!.imageUrl!,
                         fit: BoxFit.cover,
                         placeholder: (context, url) =>
-                            CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
+                            const CircularProgressIndicator(),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                     Padding(

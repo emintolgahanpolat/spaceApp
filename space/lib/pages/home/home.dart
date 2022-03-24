@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:network/model/news/news.dart';
 import 'package:network/resource.dart';
-import 'package:space/main_viewmodel.dart';
+import 'package:space/main_vm.dart';
 import 'package:provider/provider.dart';
 import 'package:space/pages/base_view.dart';
-import 'package:space/pages/home/home_viewmodel.dart';
+import 'package:space/pages/home/home_vm.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -60,8 +60,10 @@ class HomePage extends StatelessWidget {
                 itemCount: s.items.length,
                 itemBuilder: (c, i) {
                   News item = s.items[i];
-                  return Card(
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 1),
                     child: ListTile(
+                      tileColor: Colors.white,
                       onTap: () {
                         Navigator.pushNamed(context, "/detail",
                             arguments: "${item.id}");

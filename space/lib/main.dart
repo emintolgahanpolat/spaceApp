@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:space/locator.dart';
-import 'package:space/main_viewmodel.dart';
+import 'package:space/main_vm.dart';
 import 'package:provider/provider.dart';
 import 'package:space/route.dart';
 import 'package:get_storage/get_storage.dart';
