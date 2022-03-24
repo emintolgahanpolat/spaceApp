@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MainProvider extends ChangeNotifier {
+class MainViewModel extends ChangeNotifier {
   bool _isDart = false;
   bool get isDart => _isDart;
   void switchDart() {

@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:network/api/api_service.dart';
 import 'package:network/api/logger_interceptor.dart';
 
 class ApiClient {

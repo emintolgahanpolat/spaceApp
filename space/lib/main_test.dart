@@ -11,7 +11,7 @@ class TestApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => MainProvider(),
+          create: (_) => MainViewModel(),
         )
       ],
       child: const MyApp(),

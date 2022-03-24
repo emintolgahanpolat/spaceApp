@@ -1,12 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:network/model/news/news.dart';
-import 'package:network/repo/news_repository.dart';
-import 'package:network/resource.dart';
+import 'package:network/repo/i_news_repository.dart';
 
-class HomeProvider extends ChangeNotifier {
-  final NewsRepository _newsRepository;
-  HomeProvider(this._newsRepository);
+class HomeViewModel extends ChangeNotifier {
+  final INewsRepository _newsRepository;
+  HomeViewModel(this._newsRepository);
   int limit = 10;
   int page = 1;
 
@@ -15,6 +14,10 @@ class HomeProvider extends ChangeNotifier {
   void addItems(List<News> items) {
     _items.addAll(items);
     notifyListeners();
+  }
+
+  void insert(News item) {
+    _newsRepository.insertNews(item);
   }
 
   bool isLoading = false;
@@ -29,6 +32,7 @@ class HomeProvider extends ChangeNotifier {
     isLoading = false;
   }
 
+/*
   Stream<Resource<List<News>?>> get itemList =>
       _newsRepository.getList(30, page++);
 
@@ -39,7 +43,7 @@ class HomeProvider extends ChangeNotifier {
       }
     });
   }
-
+*/
   bool _isGrid = true;
   bool get isGrid => _isGrid;
   void switchGrid() {

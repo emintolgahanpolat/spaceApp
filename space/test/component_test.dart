@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:space/main_test.dart';
 
 void main() {
+  /*
   group('Component Test - Anasayfa ', () {
     testWidgets('Scroll  test ', (tester) async {
       await tester.pumpWidget(const TestApp());
@@ -49,5 +50,5 @@ void main() {
       expect(find.byKey(const ValueKey<int>(4)), findsOneWidget);
       expect(counters[4], 2);
     });
-  });
+  });*/
 }

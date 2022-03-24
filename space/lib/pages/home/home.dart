@@ -1,9 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:network/model/news/news.dart';
-import 'package:network/resource.dart';
-import 'package:space/main_vm.dart';
-import 'package:provider/provider.dart';
 import 'package:space/pages/base_view.dart';
 import 'package:space/pages/home/home_vm.dart';
 
@@ -12,10 +9,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseView<HomeProvider>(onModelReady: (s) {
+    return BaseView<HomeViewModel>(onModelReady: (s) {
       s.getData();
       //s.fData();
-    }, builder: (c, s, w) {
+    }, builder: (c, viewModel, w) {
       return Scaffold(
           appBar: AppBar(
             title: const Text("Space"),
@@ -26,13 +23,9 @@ class HomePage extends StatelessWidget {
                   },
                   icon: const Icon(Icons.settings)),
               IconButton(
-                  onPressed: s.switchGrid,
-                  icon: Icon(s.isGrid ? Icons.grid_3x3_rounded : Icons.list)),
-              IconButton(
-                  onPressed: context.read<MainProvider>().switchDart,
-                  icon: Icon(context.watch<MainProvider>().isDart
-                      ? Icons.dark_mode
-                      : Icons.light_mode))
+                  onPressed: viewModel.switchGrid,
+                  icon: Icon(
+                      viewModel.isGrid ? Icons.grid_3x3_rounded : Icons.list)),
             ],
           ),
           /* body: ResourceStream<Resource<List<News>?>>(
@@ -52,18 +45,45 @@ class HomePage extends StatelessWidget {
           body: NotificationListener<ScrollNotification>(
             onNotification: (scroll) {
               if (scroll.metrics.maxScrollExtent == scroll.metrics.pixels) {
-                s.getData();
+                viewModel.getData();
               }
               return false;
             },
             child: ListView.builder(
-                itemCount: s.items.length,
+                // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                //   crossAxisCount: viewModel.isGrid ? 2 : 1,
+                // ),
+                itemCount: viewModel.items.length,
                 itemBuilder: (c, i) {
-                  News item = s.items[i];
-                  return Padding(
+                  News item = viewModel.items[i];
+
+                  return InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/detail",
+                          arguments: "${item.id}");
+                    },
+                    child: Column(
+                      children: [
+                        AspectRatio(
+                          aspectRatio: 16 / 9,
+                          /* child: CachedNetworkImage(
+                              imageUrl: item.imageUrl ?? "",
+                              fit: BoxFit.cover,
+                            )*/
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            item.title ?? "",
+                            style: Theme.of(context).textTheme.subtitle2,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                  /*  return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 1),
                     child: ListTile(
-                      tileColor: Colors.white,
                       onTap: () {
                         Navigator.pushNamed(context, "/detail",
                             arguments: "${item.id}");
@@ -75,7 +95,7 @@ class HomePage extends StatelessWidget {
                       ),
                       title: Text(item.title ?? ""),
                     ),
-                  );
+                  );*/
                 }),
           ));
     });

@@ -11,7 +11,7 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
-        create: (_) => MainProvider(),
+        create: (_) => MainViewModel(),
       )
     ],
     child: const MyApp(),
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        brightness: context.watch<MainProvider>().isDart
+        brightness: context.watch<MainViewModel>().isDart
             ? Brightness.dark
             : Brightness.light,
         primarySwatch: Colors.blue,

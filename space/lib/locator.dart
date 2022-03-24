@@ -7,6 +7,7 @@ import 'package:space/pages/detail/detail_vm.dart';
 import 'package:space/pages/home/home_vm.dart';
 import 'package:dio/dio.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:space/pages/root/root_vm.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -23,6 +24,7 @@ void setupLocator() {
   locator.registerLazySingleton(
       () => NewsRepository(locator<ApiService>(), locator<GetStorage>()));
 
-  locator.registerFactory(() => HomeProvider(locator<NewsRepository>()));
+  locator.registerFactory(() => HomeViewModel(locator<NewsRepository>()));
   locator.registerFactory(() => DetailViewModel(locator<NewsRepository>()));
+  locator.registerFactory(() => RootViewModel());
 }

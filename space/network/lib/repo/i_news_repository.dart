@@ -3,7 +3,7 @@ import 'package:network/resource.dart';
 
 abstract class INewsRepository {
   Future<List<News>> getNewsList(int limit, int start);
-  Future<void> insertNews(News news);
+  void insertNews(News news);
   void deleteNews(News news);
   Future<News> getNews(String id);
 

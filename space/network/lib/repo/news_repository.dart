@@ -16,7 +16,7 @@ class NewsRepository extends INewsRepository {
   void deleteNews(News news) {}
 
   @override
-  Future<void> insertNews(News news) async {}
+  void insertNews(News news) {}
 
   @override
   Future<List<News>> getNewsList(int limit, int start) async {
