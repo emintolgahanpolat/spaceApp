@@ -13,7 +13,7 @@ class AccountPage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: context.read<MainViewModel>().switchDart,
-              icon: Icon(context.watch<MainViewModel>().isDart
+              icon: Icon(context.watch<MainViewModel>().isDark
                   ? Icons.dark_mode
                   : Icons.light_mode))
         ],

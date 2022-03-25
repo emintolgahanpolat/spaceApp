@@ -27,18 +27,24 @@ class DetailPage extends StatelessWidget {
                         imageUrl: viewModel.news!.imageUrl!,
                         fit: BoxFit.cover,
                         placeholder: (context, url) =>
-                            const CircularProgressIndicator(),
+                            const Center(child: CircularProgressIndicator()),
                         errorWidget: (context, url, error) =>
                             const Icon(Icons.error),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(24.0),
-                      child: Text(viewModel.news!.summary ?? ""),
+                      child: Text(
+                        viewModel.news!.title ?? "",
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Text("${viewModel.news!.summary}"),
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Text(
+                        "${viewModel.news!.summary}",
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
                     )
                   ],
                 ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MainViewModel extends ChangeNotifier {
-  bool _isDart = false;
-  bool get isDart => _isDart;
+  bool _isDark = false;
+  bool get isDark => _isDark;
   void switchDart() {
-    _isDart = !_isDart;
+    _isDark = !_isDark;
     notifyListeners();
   }
 }

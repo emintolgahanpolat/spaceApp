@@ -67,7 +67,7 @@ void main() {
       expect(find.text('Space'), findsOneWidget);
 
       expect(find.text('1'), findsOneWidget);
-      await tester.fling(find.byType(ListView), const Offset(0, -100), 5000);
+      await tester.fling(find.byType(GridView), const Offset(0, -100), 5000);
       await tester.pumpAndSettle();
       expect(find.text('1'), findsNothing);
     });

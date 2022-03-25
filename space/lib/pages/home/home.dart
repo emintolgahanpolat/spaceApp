@@ -14,34 +14,16 @@ class HomePage extends StatelessWidget {
       //s.fData();
     }, builder: (c, viewModel, w) {
       return Scaffold(
+          drawer: Drawer(),
           appBar: AppBar(
             title: const Text("Space"),
             actions: [
-              IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "/test");
-                  },
-                  icon: const Icon(Icons.settings)),
               IconButton(
                   onPressed: viewModel.switchGrid,
                   icon: Icon(
                       viewModel.isGrid ? Icons.grid_3x3_rounded : Icons.list)),
             ],
           ),
-          /* body: ResourceStream<Resource<List<News>?>>(
-            stream: s.itemList,
-            builder: (c, snapshot) {
-              if (snapshot?.data != null) {
-                return ListView.builder(
-                    itemCount: snapshot?.data?.length ?? 0,
-                    itemBuilder: (c, i) {
-                      return ListTile(
-                        title: Text(snapshot!.data![i].title ?? ""),
-                      );
-                    });
-              }
-              return const Center(child: CircularProgressIndicator());
-            }),*/
           body: NotificationListener<ScrollNotification>(
             onNotification: (scroll) {
               if (scroll.metrics.maxScrollExtent == scroll.metrics.pixels) {
@@ -49,33 +31,42 @@ class HomePage extends StatelessWidget {
               }
               return false;
             },
-            child: ListView.builder(
-                // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                //   crossAxisCount: viewModel.isGrid ? 2 : 1,
-                // ),
+            child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: viewModel.isGrid ? 2 : 1,
+                    childAspectRatio: viewModel.isGrid ? 1 : 16 / 9),
                 itemCount: viewModel.items.length,
                 itemBuilder: (c, i) {
                   News item = viewModel.items[i];
 
                   return InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, "/detail",
-                          arguments: "${item.id}");
+                      Navigator.of(context, rootNavigator: true)
+                          .pushNamed("/detail", arguments: "${item.id}");
                     },
-                    child: Column(
+                    child: Stack(
                       children: [
                         AspectRatio(
-                          aspectRatio: 16 / 9,
-                          /* child: CachedNetworkImage(
+                            aspectRatio: 16 / 9,
+                            child: CachedNetworkImage(
                               imageUrl: item.imageUrl ?? "",
                               fit: BoxFit.cover,
-                            )*/
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            item.title ?? "",
-                            style: Theme.of(context).textTheme.subtitle2,
+                              placeholder: (context, url) => Container(
+                                color: Colors.grey,
+                              ),
+                            )),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            color: Colors.black.withOpacity(0.6),
+                            padding: const EdgeInsets.all(16.0),
+                            child: Text(
+                              item.title ?? "",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle2
+                                  ?.copyWith(color: Colors.white),
+                            ),
                           ),
                         ),
                       ],
@@ -101,7 +92,7 @@ class HomePage extends StatelessWidget {
     });
   }
 }
-
+    /*
 class ResourceStream<T> extends StatelessWidget {
   final Stream<T>? stream;
   final Widget Function(BuildContext, T?) builder;
@@ -116,3 +107,17 @@ class ResourceStream<T> extends StatelessWidget {
     );
   }
 }
+ body: ResourceStream<Resource<List<News>?>>(
+            stream: s.itemList,
+            builder: (c, snapshot) {
+              if (snapshot?.data != null) {
+                return ListView.builder(
+                    itemCount: snapshot?.data?.length ?? 0,
+                    itemBuilder: (c, i) {
+                      return ListTile(
+                        title: Text(snapshot!.data![i].title ?? ""),
+                      );
+                    });
+              }
+              return const Center(child: CircularProgressIndicator());
+            }),*/
