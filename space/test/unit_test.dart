@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:network/model/news/news.dart';
-import 'package:network/repo/i_news_repository.dart';
-import 'package:network/resource.dart';
+import 'package:space/infrastructure/model/news/news.dart';
+import 'package:space/infrastructure/repo/i_news_repository.dart';
+import 'package:space/infrastructure/resource.dart';
 import 'package:space/pages/home/home.dart';
 import 'package:space/pages/home/home_vm.dart';
 

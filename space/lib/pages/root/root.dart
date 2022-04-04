@@ -18,6 +18,7 @@ class RootPage extends StatelessWidget {
                     .maybePop();
               },
               child: Scaffold(
+                drawer: viewModel.currentIndex == 0 ? const Drawer() : null,
                 body: IndexedStack(
                     index: viewModel.currentIndex, children: viewModel.pages),
                 bottomNavigationBar: BottomNavigationBar(

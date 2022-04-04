@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:network/api/api_service.dart';
-import 'package:network/api/logger_interceptor.dart';
-import 'package:network/repo/news_repository.dart';
+import 'package:space/infrastructure/api/api_service.dart';
+import 'package:space/infrastructure/api/logger_interceptor.dart';
+import 'package:space/infrastructure/repo/news_repository.dart';
 import 'package:space/pages/detail/detail_vm.dart';
 import 'package:space/pages/home/home_vm.dart';
 import 'package:dio/dio.dart';

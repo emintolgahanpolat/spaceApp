@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:network/api/logger_interceptor.dart';
+import 'package:space/infrastructure/api/logger_interceptor.dart';
 
 class ApiClient {
   static Dio? _dio;

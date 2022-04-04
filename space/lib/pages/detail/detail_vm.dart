@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:network/model/news/news.dart';
-import 'package:network/repo/news_repository.dart';
+import 'package:space/infrastructure/model/news/news.dart';
+import 'package:space/infrastructure/repo/i_news_repository.dart';
 
 class DetailViewModel extends ChangeNotifier {
-  final NewsRepository _newsRepository;
+  final INewsRepository _newsRepository;
   DetailViewModel(this._newsRepository);
   News? _news;
   News? get news => _news;

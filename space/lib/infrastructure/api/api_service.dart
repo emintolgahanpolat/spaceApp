@@ -1,6 +1,6 @@
-import 'package:network/model/news/news.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
+import 'package:space/infrastructure/model/news/news.dart';
 part 'api_service.g.dart';
 
 @RestApi(baseUrl: "https://api.spaceflightnewsapi.net")

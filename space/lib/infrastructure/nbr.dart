@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'package:network/logger.dart';
-import 'package:network/resource.dart';
+
+import 'package:space/infrastructure/logger.dart';
+import 'package:space/infrastructure/resource.dart';
 
 class NetworkBoundResource<ResultType, RequestType> {
   final _result = StreamController<Resource<ResultType?>>();

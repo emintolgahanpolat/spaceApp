@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:network/model/news/news.dart';
+import 'package:space/infrastructure/model/news/news.dart';
 import 'package:space/pages/base_view.dart';
 import 'package:space/pages/home/home_vm.dart';
 
@@ -11,11 +11,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseView<HomeViewModel>(onModelReady: (s) {
       s.getData();
-      //s.fData();
     }, builder: (c, viewModel, w) {
       return Scaffold(
-          drawer: Drawer(),
           appBar: AppBar(
+            leading: IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                context
+                    .findRootAncestorStateOfType<ScaffoldState>()
+                    ?.openDrawer();
+              },
+            ),
             title: const Text("Space"),
             actions: [
               IconButton(
@@ -58,6 +64,7 @@ class HomePage extends StatelessWidget {
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
+                            width: double.infinity,
                             color: Colors.black.withOpacity(0.6),
                             padding: const EdgeInsets.all(16.0),
                             child: Text(

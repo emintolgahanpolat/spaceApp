@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:get_storage/get_storage.dart';
-import 'package:network/api/api_service.dart';
-import 'package:network/model/news/news.dart';
-import 'package:network/network_bound_resource.dart';
-import 'package:network/repo/i_news_repository.dart';
-import 'package:network/resource.dart';
+import 'package:space/infrastructure/api/api_service.dart';
+import 'package:space/infrastructure/model/news/news.dart';
+import 'package:space/infrastructure/network_bound_resource.dart';
+import 'package:space/infrastructure/repo/i_news_repository.dart';
+import 'package:space/infrastructure/resource.dart';
 
 class NewsRepository extends INewsRepository {
   final ApiService _apiService;

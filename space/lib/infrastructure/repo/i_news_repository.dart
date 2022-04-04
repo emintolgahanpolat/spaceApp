@@ -1,5 +1,5 @@
-import 'package:network/model/news/news.dart';
-import 'package:network/resource.dart';
+import 'package:space/infrastructure/model/news/news.dart';
+import 'package:space/infrastructure/resource.dart';
 
 abstract class INewsRepository {
   Future<List<News>> getNewsList(int limit, int start);

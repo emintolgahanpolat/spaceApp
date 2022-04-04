@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:network/model/news/news.dart';
-import 'package:network/repo/i_news_repository.dart';
+import 'package:space/infrastructure/model/news/news.dart';
+import 'package:space/infrastructure/repo/i_news_repository.dart';
 
 class HomeViewModel extends ChangeNotifier {
   final INewsRepository _newsRepository;
